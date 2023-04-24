@@ -1,6 +1,7 @@
 let inputN;
 let buttonS;
 let distans;
+let radio=120;
 const rex = /^[0-9]+$/;
 function setup() {
     createCanvas(1440,800);   
@@ -14,6 +15,13 @@ function draw() {
   textSize(30);
   text("Valor :" + inputN.value(), 20, 50);
   textSize(30);
+
+
+  drawCircle( 220,450, radio);
+  drawLine(220,450,200,100);
+
+  drawCircle( 350*2,450, radio);
+  drawCircle( 390*3,450, radio);
 }
 
 function head(){
@@ -36,6 +44,52 @@ function head(){
 }
 function sumbit(){
   alert("felicidades ganaste un auto 2023");
+}
+
+function drawCircle(x, y, r) {
+  let x1 = 0;
+  let y1 = r;
+  let d = 1 - r;
+  while (x1 <= y1) {
+    point(x + x1, y + y1);
+    point(x - x1, y + y1);
+    point(x + x1, y - y1);
+    point(x - x1, y - y1);
+    point(x + y1, y + x1);
+    point(x - y1, y + x1);
+    point(x + y1, y - x1);
+    point(x - y1, y - x1);
+    if (d < 0) {
+      d = d + 2 * x1 + 3;
+    } else {
+      d = d + 2 * (x1 - y1) + 5;
+      y1--;
+    }
+    x1++;
+  }
+}
+function drawLine(x1, y1, x2, y2) {
+  let dx = x2 - x1;
+  let dy = y2 - y1;
+  let m = dy / dx;
+  let x = x1;
+  let y = y1;
+  let i;
+  if (abs(m) < 1) {
+    let y_step = m * (x2 - x1 > 0 ? 1 : -1);
+    for (i = 0; i < abs(dx); i++) {
+      point(x, y);
+      x += x2 - x1 > 0 ? 1 : -1;
+      y += y_step;
+    }
+  } else {
+    let x_step = (x2 - x1) / dy;
+    for (i = 0; i < abs(dy); i++) {
+      point(x, y);
+      y += y2 - y1 > 0 ? 1 : -1;
+      x += x_step;
+    }
+  }
 }
 
 // function validarNum(){
