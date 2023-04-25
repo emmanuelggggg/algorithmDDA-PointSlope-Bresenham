@@ -13,9 +13,14 @@ function draw() {
   text("Valor :" + inputN.value(), 20, 50);
   textSize(30);
   
-  
+  text('DDA',200,640 );
+  textSize(30);
   drawCircle( 220,450, radio);
+  text('POINT-POTN',350*2,640 );
+  textSize(30);
   drawCircle( 350*2,450, radio);
+  text('BRESENHAM',390*3,640 );
+  textSize(30);
   drawCircle( 390*3,450, radio);
 }
 
